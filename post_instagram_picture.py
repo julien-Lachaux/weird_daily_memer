@@ -4,6 +4,7 @@ from webdriver_manager.core.os_manager import ChromeType
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 import time
 import os
 
@@ -49,7 +50,7 @@ def post_instagram_picture():
 
         # Click on the picture upload button and upload your picture (replace with your own logic)
         # For demonstration purposes, we'll simulate clicking on the "Upload Picture" button
-        upload_button = driver.find_element_by_xpath("//button[contains(text(),'Upload Picture')]")
+        upload_button = driver.find_element(By.XPATH, "//button[contains(text(),'Upload Picture')]")
         upload_button.click()
         time.sleep(2)
 
