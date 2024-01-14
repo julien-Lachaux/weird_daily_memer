@@ -13,6 +13,7 @@ IG_PASSWORD = os.environ["IG_PASSWORD"]
 PICTURE_PATH = os.environ["PICTURE_PATH"]
 
 def post_instagram_picture():
+    chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
     chrome_options = Options()
     options = [
         "--headless",
