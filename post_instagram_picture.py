@@ -42,7 +42,7 @@ def post_instagram_picture():
 
         allow_cookie_banner = driver.find_element(By.XPATH, "(//button)[10]")
         allow_cookie_banner.click()
-        time.sleep(2)
+        wait.until(lambda d : allow_cookie_banner.is_displayed())
 
         upload_file = os.path.abspath(
         os.path.join(os.path.dirname(__file__), f"{PICTURE_PATH}"))
@@ -73,7 +73,7 @@ def post_instagram_picture():
 
         next_button_1 = driver.find_element(By.XPATH, "(//div[contains(@role, 'button')])[4]")
         next_button_1.click()
-        time.sleep(10)
+        time.sleep(2)
         
         next_button_2 = driver.find_element(By.XPATH, "(//div[contains(@role, 'button')])[4]")
         next_button_2.click()
