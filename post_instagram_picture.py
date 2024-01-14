@@ -35,6 +35,9 @@ def post_instagram_picture():
         driver.get("https://www.instagram.com/")
         time.sleep(2)
 
+        upload_file = os.path.abspath(
+        os.path.join(os.path.dirname(__file__), f"{PICTURE_PATH}"))
+
         # Log in
         username_input = driver.find_element("name", "username")
         password_input = driver.find_element("name", "password")
@@ -50,12 +53,25 @@ def post_instagram_picture():
 
         # Click on the picture upload button and upload your picture (replace with your own logic)
         # For demonstration purposes, we'll simulate clicking on the "Upload Picture" button
-        upload_button = driver.find_element(By.XPATH, "//button[contains(text(),'Upload Picture')]")
-        upload_button.click()
+        new_post_link = driver.find_element(By.XPATH, "(//a[contains(@href, '#')])[3]")
+        new_post_link.click()
         time.sleep(2)
 
-        # You can add logic here to upload your picture using Selenium
-        # Note: Uploading a picture programmatically can be more complex and might involve interacting with file input elements.
+        input_file = driver.find_element(By.XPATH, "(//input[contains(@accept, 'image/jpeg,image/png,image/heic,image/heif,video/mp4,video/quicktime')])[1]")
+        input_file.send_keys(upload_file)
+        time.sleep(2)
+
+        next_button_1 = driver.find_element(By.XPATH, "(//div[contains(@role, 'button')])[4]")
+        next_button_1.click()
+        time.sleep(2)
+        
+        next_button_2 = driver.find_element(By.XPATH, "(//div[contains(@role, 'button')])[4]")
+        next_button_2.click()
+        time.sleep(2)
+
+        share_button_2 = driver.find_element(By.XPATH, "(//div[contains(@role, 'button')])[4]")
+        share_button_2.click()
+        time.sleep(2)
 
     finally:
         # Close the browser
