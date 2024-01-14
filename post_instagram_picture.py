@@ -9,6 +9,7 @@ import os
 # Replace with your Instagram username and password
 IG_USERNAME = os.environ["IG_USERNAME"]
 IG_PASSWORD = os.environ["IG_PASSWORD"]
+PICTURE_PATH = os.environ["PICTURE_PATH"]
 
 def post_instagram_story():
     driver = webdriver.Chrome(service=ChromiumService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
@@ -26,22 +27,23 @@ def post_instagram_story():
         password_input.send_keys(Keys.RETURN)
         time.sleep(3)
 
-        # Navigate to story upload page (replace with your own logic)
+        # Navigate to picture upload page (replace with your own logic)
         # For demonstration purposes, we'll navigate to the user's profile page
         driver.get(f"https://www.instagram.com/{IG_USERNAME}/")
         time.sleep(2)
 
-        # Click on the story button and upload your story (replace with your own logic)
-        # For demonstration purposes, we'll simulate clicking on the "Add to Your Story" button
-        story_button = driver.find_element_by_xpath("//div[@role='menuitem']")
-        story_button.click()
+        # Click on the picture upload button and upload your picture (replace with your own logic)
+        # For demonstration purposes, we'll simulate clicking on the "Upload Picture" button
+        upload_button = driver.find_element_by_xpath("//button[contains(text(),'Upload Picture')]")
+        upload_button.click()
         time.sleep(2)
 
-        # You can add logic here to upload your story using Selenium
+        # You can add logic here to upload your picture using Selenium
+        # Note: Uploading a picture programmatically can be more complex and might involve interacting with file input elements.
 
     finally:
         # Close the browser
         driver.quit()
 
 if __name__ == "__main__":
-    post_instagram_story()
+    post_instagram_picture()
